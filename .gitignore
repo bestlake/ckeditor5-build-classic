@@ -1,0 +1,9 @@
+!.gitignore
+!.gitattributes
+.DS_Store
+/.idea
+/.svn
+/.git
+/.env
+/node_modules
+/package-lock.json
