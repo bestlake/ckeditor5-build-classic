@@ -12,8 +12,13 @@ function isLocalImage(node) {
 }
 
 // plugins/easyimage/plugin.js
+var imgWithDataUri = new RegExp( '<img[^>]*\\ssrc=[\\\'\\"]?data:image/(' + SUPPORTED_IMAGE_TYPES.join( '|' ) + ');base64,' , 'i' );
+//改为：
+var imgWithDataUri = new RegExp( '<img[^>]*\\ssrc=[\\\'\\"]?' , 'i' );
+
 // Assign src once, as it might be a big string, so there's no point in duplicating it all over the place.
 var imgSrc = img.getAttribute( 'src' );
+// 新增src转换
 if (new RegExp( '^https?' , 'i' ).test(imgSrc)) {
 	imgSrc = 'data:image/jpeg;base64,' + btoa(imgSrc);
 }
